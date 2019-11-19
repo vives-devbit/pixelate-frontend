@@ -1,4 +1,4 @@
-import BluetoothManager from './bluetoothManager'
+import BluetoothManager from './BluetoothManager'
 
 export enum State {
   Ready,
@@ -17,7 +17,7 @@ export default class CaptureManager {
   public constructor (bluetooth: BluetoothManager) {
     this.bluetooth = bluetooth
 
-    this.bluetooth.on('data', (controller, button) => {
+    this.bluetooth.on('data', (button: any) => {
       console.log(button)
       // TODO transmit data from here
     })
