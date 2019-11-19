@@ -58,7 +58,7 @@ export default class BluetoothManager extends EventEmitter {
           const value = event.target ? event.target.value : 0
           const command = String.fromCharCode(new Int8Array(value.buffer)[0])
           // console.log(event)
-          this.emit('data', controller, command)
+          this.emit('data', command)
         })
       })
     })
