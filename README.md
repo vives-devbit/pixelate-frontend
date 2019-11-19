@@ -1,24 +1,15 @@
 # pixelate-frontend
 
+Production (master): [pixelate.devbitapp.be](https://pixelate.devbitapp.be)
+
+Development (develop): [dev.pixelate.devbitapp.be](https://dev.pixelate.devbitapp.be)
+
 ## Project setup
 ```
-yarn install
+npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+npm serve
 ```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
