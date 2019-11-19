@@ -1,18 +1,42 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home container">
+    <PlayerEntries/>
+    <v-row>
+      <v-btn large color="red" dark @click="startGame">Start new game</v-btn>
+    </v-row>
+    <TopScores/>
+    <GamesHistory/>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import PlayerEntries from '@/components/PlayerEntries.vue'
+import TopScores from '@/components/TopScores.vue'
+import GamesHistory from '@/components/GamesHistory.vue'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
-export default {
-  name: 'home',
+import BluetoothManager from '@/lib/BluetoothManager'
+import CaptureManager from '@/lib/CaputreManager'
+
+@Component({
   components: {
-    HelloWorld
+    PlayerEntries, TopScores, GamesHistory
+  }
+})
+
+export default class Home extends Vue {
+  private bluetooth: BluetoothManager
+  private capture: CaptureManager
+
+  public constructor () {
+    super()
+    this.bluetooth = new BluetoothManager(this.$store)
+    this.capture = new CaptureManager(this.bluetooth)
+  }
+
+  private startGame () {
+    this.capture.start()
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="red darken-2"
       dark
     >
       <div class="d-flex align-center">
@@ -16,7 +16,7 @@
         />
 
         <v-img
-          alt="Vuetify Name"
+          alt="PixelAte"
           class="shrink mt-1 hidden-sm-and-down"
           contain
           min-width="100"
@@ -26,36 +26,26 @@
       </div>
 
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+      <v-btn to="/" text>
+        <v-icon left>mdi-gamepad-square</v-icon>
+        <span>Home</span>
+      </v-btn>
+      <v-btn to="devices" text>
+        <v-icon left>mdi-bluetooth-connect</v-icon>
+        <span>Devices</span>
       </v-btn>
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <router-view/>
     </v-content>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
 
 export default Vue.extend({
-  name: 'App',
-
-  components: {
-    HelloWorld
-  },
-
-  data: () => ({
-    //
-  })
+  name: 'PixelAte'
 })
 </script>
