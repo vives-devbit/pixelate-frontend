@@ -14,7 +14,7 @@ export default class CaptureManager {
 
   private captureState: State;
 
-  public constructor (bluetooth: BluetoothManager, options: any) {
+  public constructor (bluetooth: BluetoothManager) {
     this.bluetooth = bluetooth
 
     this.bluetooth.on('data', (controller, button) => {
