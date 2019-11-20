@@ -11,5 +11,5 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm serve
+npm run serve
 ```

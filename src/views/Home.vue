@@ -17,7 +17,7 @@ import GamesHistory from '@/components/GamesHistory.vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 import BluetoothManager from '@/lib/BluetoothManager'
-import CaptureManager from '@/lib/CaputreManager'
+import CaptureManager from '@/lib/CaptureManager'
 
 @Component({
   components: {
