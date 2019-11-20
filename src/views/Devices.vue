@@ -10,7 +10,7 @@
             </v-list-item>
             <template v-for="(item, index) in items">
               <v-list-item :key="item.title">
-                <v-list-item-avatar class="blue">
+                <v-list-item-avatar :class="item.color">
                   <v-icon v-text="item.icon"></v-icon>
                 </v-list-item-avatar>
 
@@ -72,7 +72,7 @@ export default class Devices extends Vue {
   private connectionStatus: boolean = false;
   private connectionStatusMessage: string = 'Connecting...';
 
-  private items: Array<{icon: string, title: string, subtitle: string}> = [];
+  private items: Array<{icon: string, color: string, title: string, subtitle: string}> = [];
 
   public constructor () {
     super()
@@ -81,9 +81,10 @@ export default class Devices extends Vue {
     this.bluetoothManager.on('error', (message: string) => {
       this.connectionStatusMessage = message
     })
-    this.$store.getters.devices.forEach((device: BluetoothDevice) => {
+    this.$store.getters.devices.forEach((device: BluetoothDevice, id: string) => {
       this.items.push({
         icon: 'mdi-bluetooth-connect',
+        color: id,
         title: 'label',
         subtitle: `${device.name} - ${device.uuids}`
       })
@@ -95,10 +96,11 @@ export default class Devices extends Vue {
     this.bluetoothManager.addDevice()
   }
 
-  private deviceConnected (device: BluetoothDevice) {
+  private deviceConnected (device: BluetoothDevice, id: string) {
     this.items.push({
       icon: 'mdi-bluetooth-connect',
-      title: 'label',
+      color: id,
+      title: id,
       subtitle: `${device.name} - ${device.uuids}`
     })
     this.connectionStatus = false

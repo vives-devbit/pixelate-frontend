@@ -36,6 +36,7 @@ export default class Home extends Vue {
   }
 
   private startGame () {
+    console.log('Starting the game')
     this.capture.start()
   }
 }
