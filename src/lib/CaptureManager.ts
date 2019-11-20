@@ -17,8 +17,8 @@ export default class CaptureManager {
   public constructor (bluetooth: BluetoothManager) {
     this.bluetooth = bluetooth
 
-    this.bluetooth.on('data', (button: any) => {
-      console.log(button)
+    this.bluetooth.on('data', (controller: any, button: any) => {
+      console.log(`Controller ${controller} button ${button}`)
       // TODO transmit data from here
     })
     this.captureState = State.Ready
