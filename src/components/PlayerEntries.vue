@@ -20,7 +20,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-const PLAYER_COLORS = ['red', 'green', 'blue', 'yellow', 'pink', 'teal']
+const PLAYER_COLORS = ['red', 'green', 'blue', 'yellow', 'purple', 'teal']
 
 @Component
 export default class PlayerEntries extends Vue {

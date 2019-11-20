@@ -1,22 +1,81 @@
 <template>
   <v-container>
-    <v-layout
-      text-xs-center
-      wrap
-    >
-    </v-layout>
+    <v-row>
+      <h1>Charts</h1>
+    </v-row>
+    <v-row>
+      <div id="chart">
+        <apexchart ref="realtimeChart" type=bar height=800 :options="chartOptions" :series="series" />
+      </div>
+    </v-row>
   </v-container>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, PropSync, Vue } from 'vue-property-decorator'
+import VueApexCharts from 'vue-apexcharts'
 
-@Component
+const colors = ['#F44336', '#4CAF50', '#2196F3', '#FFEB3B', '#9C27B0', '#009688']
+const chartOptions = {
+  chart: {
+    height: '600px',
+    width: '100%',
+    type: 'bar'
+    // events: {
+    //   click: function (chart, w, e) {
+    //     console.log(chart, w, e)
+    //   }
+    // },
+  },
+  colors: colors,
+  plotOptions: {
+    bar: {
+      columnWidth: '95%',
+      distributed: true
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+
+  xaxis: {
+    categories: ['Red', 'Green', 'Blue', 'Yellow', 'Pink', 'Teal'],
+    labels: {
+      style: {
+        colors: colors,
+        fontSize: '14px'
+      }
+    }
+  },
+  yaxis: {
+    decimalsInFloat: 0
+  }
+}
+
+@Component({
+  components: {
+    apexchart: VueApexCharts
+  }
+})
+
 export default class GameProgress extends Vue {
-  @Prop() private msg!: string;
+  // private series: any
+  private chartOptions: any
+  private chart?: Element
+
+  @PropSync('scores') series!: { data: number[]}[];
+
+  public constructor () {
+    super()
+    this.chartOptions = chartOptions
+  }
 }
 </script>
 
-<style>
-
+<style lang="css" scoped>
+#chart, apexchart {
+  width: 100%;
+  min-height: 400px;
+  max-height: 900px;
+}
 </style>
