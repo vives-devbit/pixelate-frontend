@@ -5,7 +5,7 @@
     </v-row>
     <v-row>
       <div id="chart">
-        <apexchart ref="realtimeChart" type=bar height=800 :options="chartOptions" :series="series" />
+        <apexchart ref="realtimeChart" type=bar height=700 :options="chartOptions" :series="series" />
       </div>
     </v-row>
   </v-container>

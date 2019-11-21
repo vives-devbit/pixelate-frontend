@@ -37,6 +37,8 @@ export default class BluetoothManager extends EventEmitter {
       .then((server: BluetoothRemoteGATTServer) => {
         console.log('getting primary service')
 
+        let id = 'no-name'
+
         server.getPrimaryService(InfoServiceUuid)
           .then((service: BluetoothRemoteGATTService) => {
             console.log('getting characteristic')
@@ -46,22 +48,22 @@ export default class BluetoothManager extends EventEmitter {
             return characteristic.readValue()
           })
           .then((data: DataView) => {
-            const id = (new TextDecoder()).decode(data.buffer)
+            id = (new TextDecoder()).decode(data.buffer)
             this.emit('connected', device, id)
-          })
-          .catch((error) => {
-            console.log(error.message)
-            this.emit('error', error.message)
-          })
 
-        server.getPrimaryService(ControllerServiceUuid)
-          .then((service: BluetoothRemoteGATTService) => {
-            console.log('getting characteristic')
-            return service.getCharacteristic(TouchCharacteristicUuid)
-          })
-          .then((characteristic: BluetoothRemoteGATTCharacteristic) => {
-            this.storeCharacteristic(characteristic)
-            console.log(characteristic)
+            server.getPrimaryService(ControllerServiceUuid)
+              .then((service: BluetoothRemoteGATTService) => {
+                console.log('getting characteristic')
+                return service.getCharacteristic(TouchCharacteristicUuid)
+              })
+              .then((characteristic: BluetoothRemoteGATTCharacteristic) => {
+                this.storeCharacteristic(characteristic, id)
+                console.log(characteristic)
+              })
+              .catch((error) => {
+                console.log(error.message)
+                this.emit('error', error.message)
+              })
           })
           .catch((error) => {
             console.log(error.message)
@@ -76,13 +78,13 @@ export default class BluetoothManager extends EventEmitter {
 
   public startNotifications () {
     const characteristics = this.store.getters.characteristics
-    characteristics.forEach((characteristic: BluetoothRemoteGATTCharacteristic) => {
+    characteristics.forEach((characteristic: BluetoothRemoteGATTCharacteristic, controllerId: string) => {
       characteristic.startNotifications().then(() => {
         characteristic.addEventListener('characteristicvaluechanged', (event: any) => {
           const value = event.target ? event.target.value : 0
           const command = String.fromCharCode(new Int8Array(value.buffer)[0])
-          const controllerId = event.target.service.device.id
-          this.emit('data', 'color_id', command)
+          // const controllerId = controller
+          this.emit('data', controllerId, command)
         })
       })
     })
@@ -99,7 +101,8 @@ export default class BluetoothManager extends EventEmitter {
     this.store.commit('addDevice', { device })
   }
 
-  private storeCharacteristic (characteristic: BluetoothRemoteGATTCharacteristic) {
-    this.store.commit('addCharacteristic', { characteristic })
+  private storeCharacteristic (characteristic: BluetoothRemoteGATTCharacteristic, id: string) {
+    this.store.commit('addCharacteristic', { characteristic, id })
+    console.log(`storing characteristic for ${id}`)
   }
 }

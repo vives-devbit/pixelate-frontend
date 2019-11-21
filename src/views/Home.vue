@@ -26,18 +26,6 @@ import CaptureManager from '@/lib/CaptureManager'
 })
 
 export default class Home extends Vue {
-  private bluetooth: BluetoothManager
-  private capture: CaptureManager
 
-  public constructor () {
-    super()
-    this.bluetooth = new BluetoothManager(this.$store)
-    this.capture = new CaptureManager(this.bluetooth)
-  }
-
-  private startGame () {
-    console.log('Starting the game')
-    this.capture.start()
-  }
 }
 </script>

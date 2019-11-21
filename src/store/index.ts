@@ -9,11 +9,11 @@ export default new Vuex.Store({
     characteristics: new Map<string, BluetoothRemoteGATTCharacteristic>()
   },
   mutations: {
-    addDevice (state, data: { device: BluetoothDevice }) {
-      state.devices.set('foo', data.device)
+    addDevice (state, data: { device: BluetoothDevice, id: string }) {
+      state.devices.set(data.id, data.device)
     },
-    addCharacteristic (state, data: { characteristic: BluetoothRemoteGATTCharacteristic }) {
-      state.characteristics.set('foo', data.characteristic)
+    addCharacteristic (state, data: { characteristic: BluetoothRemoteGATTCharacteristic, id: string }) {
+      state.characteristics.set(data.id, data.characteristic)
     }
   },
   actions: {

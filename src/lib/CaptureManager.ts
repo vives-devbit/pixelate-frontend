@@ -12,14 +12,20 @@ export enum State {
 export default class CaptureManager {
   private bluetooth: BluetoothManager
 
-  private captureState: State;
+  private captureState: State
+  private socket: any
 
-  public constructor (bluetooth: BluetoothManager) {
+  public constructor (bluetooth: BluetoothManager, socket: any) {
     this.bluetooth = bluetooth
+    this.socket = socket
 
     this.bluetooth.on('data', (controller: any, button: any) => {
       console.log(`Controller ${controller} button ${button}`)
       // TODO transmit data from here
+      let updates = [
+        { id: controller, actions: [button] }
+      ]
+      this.socket.emit('update', JSON.stringify(updates))
     })
     this.captureState = State.Ready
   }
