@@ -33,7 +33,7 @@
       </v-col>
     </v-row>
 
-    <v-btn to="/game" color="secondary" right absolute x-large :disabled="items.length == 0">Play <v-icon>mdi-arrow-right</v-icon></v-btn>
+    <v-btn to="/" color="secondary" right absolute x-large :disabled="items.length == 0">Play <v-icon>mdi-arrow-right</v-icon></v-btn>
 
     <v-dialog
       v-model="connectionStatus"

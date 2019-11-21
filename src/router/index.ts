@@ -7,18 +7,18 @@ import Progress from '@/views/Progress.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
+  // {
+  //   path: '/',
+  //   name: 'home',
+  //   component: Home
+  // },
   {
     path: '/devices',
     name: 'devices',
     component: Devices
   },
   {
-    path: '/game',
+    path: '/',
     name: 'game',
     component: Progress
   },

@@ -30,10 +30,10 @@
         <v-icon left>mdi-gamepad-square</v-icon>
         <span>Home</span>
       </v-btn>
-      <v-btn to="game" text>
+      <!-- <v-btn to="game" text>
         <v-icon left>mdi-chart-bar</v-icon>
         <span>Game</span>
-      </v-btn>
+      </v-btn> -->
       <v-btn to="devices" text>
         <v-icon left>mdi-bluetooth-connect</v-icon>
         <span>Devices</span>
