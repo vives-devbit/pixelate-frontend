@@ -1,9 +1,6 @@
 <template>
   <v-container>
     <v-row>
-      <h1>Charts</h1>
-    </v-row>
-    <v-row>
       <div id="chart">
         <apexchart ref="realtimeChart" type=bar height=700 :options="chartOptions" :series="series" />
       </div>
@@ -35,7 +32,10 @@ const chartOptions = {
     }
   },
   dataLabels: {
-    enabled: false
+    enabled: true,
+    style: {
+      fontSize: '32px'
+    }
   },
 
   xaxis: {
@@ -43,12 +43,21 @@ const chartOptions = {
     labels: {
       style: {
         colors: colors,
-        fontSize: '14px'
+        fontSize: '24px'
       }
     }
   },
   yaxis: {
-    decimalsInFloat: 0
+    decimalsInFloat: 0,
+    min: 0,
+    max: function (max: number) {
+      return max > 100 ? max : 100
+    },
+    labels: {
+      style: {
+        fontSize: '18px'
+      }
+    }
   }
 }
 

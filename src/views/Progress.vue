@@ -3,11 +3,11 @@
       <v-progress-linear
         color="blue"
         :value="timer * (100 / 60)"
-        height="50"
+        height="75"
         reactive
       >
       <template v-slot="{ value }">
-        <strong>{{ Math.ceil(value * (60 / 100)) }} seconden</strong>
+        <strong class="display-2">{{ Math.ceil(value * (60 / 100)) }} sec</strong>
       </template>
       </v-progress-linear>
     <div class="home container">
