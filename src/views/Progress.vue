@@ -1,9 +1,21 @@
 <template>
-  <div class="home container">
-    <GameProgress v-bind:scores.sync="scores"/>
-    <v-row>
-      <v-btn large color="red" dark @click="startGame">Start new game</v-btn>
-    </v-row>
+  <div>
+      <v-progress-linear
+        color="blue"
+        :value="timer * (100 / 60)"
+        height="50"
+        reactive
+      >
+      <template v-slot="{ value }">
+        <strong>{{ Math.ceil(value * (60 / 100)) }} seconden</strong>
+      </template>
+      </v-progress-linear>
+    <div class="home container">
+      <GameProgress v-bind:scores.sync="scores"/>
+      <v-row>
+        <v-btn large color="red" dark @click="startGame">Start new game</v-btn>
+      </v-row>
+    </div>
   </div>
 </template>
 
@@ -35,6 +47,8 @@ export default class Home extends Vue {
   private bluetooth: BluetoothManager
   private capture: CaptureManager
 
+  private timer: number = 60
+
   private scores = [{
     data: [0, 0, 0, 0, 0, 0]
   }]
@@ -65,6 +79,7 @@ export default class Home extends Vue {
         data.stats[5].fieldcount
       ]
     }]
+    this.timer = data.timeleft
   }
 }
 </script>
