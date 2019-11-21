@@ -12,6 +12,14 @@
 import { Component, PropSync, Vue } from 'vue-property-decorator'
 import VueApexCharts from 'vue-apexcharts'
 
+// const colorMap = new Map<string, string>()
+// colorMap.set('red', '#F44336')
+// colorMap.set('green', '#4CAF50')
+// colorMap.set('blue', '#2196F3')
+// colorMap.set('yellow', '#FFEB3B')
+// colorMap.set('ping', '#9C27B0')
+// colorMap.set('purple', '#009688')
+
 const colors = ['#F44336', '#4CAF50', '#2196F3', '#FFEB3B', '#9C27B0', '#009688']
 const chartOptions = {
   chart: {
