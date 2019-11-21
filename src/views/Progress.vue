@@ -16,6 +16,13 @@
         <v-btn large color="red" dark @click="startGame">Start new game</v-btn>
       </v-row>
     </div>
+    <v-dialog v-model="gameOver" width="600">
+      <v-card color="red" class="justify-center">
+        <v-card-title class="text-center display-4 pa-11 justify-center">
+          Game <br/>Over!
+        </v-card-title>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -48,6 +55,7 @@ export default class Home extends Vue {
   private capture: CaptureManager
 
   private timer: number = 60
+  private gameOver: boolean = false;
 
   private scores = [{
     data: [0, 0, 0, 0, 0, 0]
@@ -80,6 +88,9 @@ export default class Home extends Vue {
       ]
     }]
     this.timer = data.timeleft
+    if (this.timer === 0) {
+      this.gameOver = true
+    }
   }
 }
 </script>
