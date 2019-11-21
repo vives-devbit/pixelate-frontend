@@ -13,7 +13,7 @@
     <div class="home container">
       <GameProgress v-bind:scores.sync="scores"/>
       <v-row>
-        <v-btn large color="red" dark @click="startGame">Start new game</v-btn>
+        <v-btn x-large color="red" dark @click="startGame">Start new game <v-icon dark right>mdi-play</v-icon></v-btn>
       </v-row>
     </div>
     <v-dialog v-model="gameOver" width="600">
