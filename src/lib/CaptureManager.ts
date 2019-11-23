@@ -28,6 +28,7 @@ export default class CaptureManager {
       this.socket.emit('update', JSON.stringify(updates))
     })
     this.captureState = State.Ready
+    this.bluetooth.startNotifications()
   }
 
   get state (): State {
@@ -35,12 +36,11 @@ export default class CaptureManager {
   }
 
   public start () {
-    this.bluetooth.startNotifications()
     this.captureState = State.Capturing
   }
 
   public stop () {
-    this.bluetooth.stopNotifications()
+    // this.bluetooth.stopNotifications()
     this.captureState = State.Stopped
   }
 
