@@ -101,7 +101,7 @@ export default class Devices extends Vue {
       icon: 'mdi-bluetooth-connect',
       color: id,
       title: id,
-      subtitle: `${device.name} - ${device.uuids}`
+      subtitle: `${device.name}`
     })
     this.connectionStatus = false
   }
