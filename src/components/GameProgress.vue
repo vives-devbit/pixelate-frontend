@@ -17,8 +17,8 @@ import VueApexCharts from 'vue-apexcharts'
 // colorMap.set('green', '#4CAF50')
 // colorMap.set('blue', '#2196F3')
 // colorMap.set('yellow', '#FFEB3B')
-// colorMap.set('ping', '#9C27B0')
-// colorMap.set('purple', '#009688')
+// colorMap.set('purple', '#9C27B0')
+// colorMap.set('teal', '#009688')
 
 const colors = ['#F44336', '#4CAF50', '#2196F3', '#FFEB3B', '#9C27B0', '#009688']
 const chartOptions = {
@@ -47,7 +47,7 @@ const chartOptions = {
   },
 
   xaxis: {
-    categories: ['Red', 'Green', 'Blue', 'Yellow', 'Pink', 'Teal'],
+    categories: ['Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Teal'],
     labels: {
       style: {
         colors: colors,

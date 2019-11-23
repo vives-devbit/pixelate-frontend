@@ -47,9 +47,9 @@ const colorMap = new Map<string, string>()
 colorMap.set('red', '#FF0000')
 colorMap.set('green', '#00FF00')
 colorMap.set('blue', '#0000FF')
-colorMap.set('yellow', '#FF00FF')
-colorMap.set('ping', '#00FFFF')
-colorMap.set('purple', '#FFFF00')
+colorMap.set('yellow', '#FFFF00')
+colorMap.set('purple', '#FF00FF')
+colorMap.set('teal', '#00FFFF')
 
 const playerOrder = [ ...colorMap.keys() ]
 
@@ -65,7 +65,7 @@ export default class Home extends Vue {
 
   private timer: number = 60
   private gameOver: boolean = false;
-  private winner: string = 'Sille';
+  private winner: string = 'Sille (aka Mister Van Le Shoot)';
 
   private scores = [{
     data: [0, 0, 0, 0, 0, 0]
