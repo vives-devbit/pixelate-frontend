@@ -107,7 +107,7 @@ export default class Home extends Vue {
     if (this.timer === 0) {
       this.gameOver = true
     }
-    const ranking = data.stats.sort((a: any, b: any) => (a.fieldcound > b.fieldcount) ? 1 : -1)
+    const ranking = data.stats.sort((a: any, b: any) => (a.fieldcount < b.fieldcount) ? 1 : -1)
     this.winner = ranking[0].id
   }
 }
